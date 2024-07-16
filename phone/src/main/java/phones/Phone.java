@@ -1,3 +1,5 @@
+package phones;
+
 public class Phone {
 
 
@@ -60,9 +62,9 @@ public class Phone {
             Phone phoneRinat = new Phone("8925412564", "iphone", 344);
             Phone phoneDiman = new Phone("89375896125", "xiaomi", 452);
 
-        System.out.println("Phone 1: Номер-" + phoneIgor.getNumber() + ", Модель-" + phoneIgor.getModel() + ", Вес-" + phoneIgor.getWeight() + "kg");
-        System.out.println("Phone 2: Номер-" + phoneRinat.getNumber() + ", Модель-" + phoneRinat.getModel() + ",Вес-" + phoneRinat.getWeight() + "kg");
-        System.out.println("Phone 3: Номер -" + phoneDiman.getNumber() + ", Модель-" + phoneDiman.getModel() + ", Вес-" + phoneDiman.getWeight() + "kg");
+        System.out.println("phones.Phone 1: Номер-" + phoneIgor.getNumber() + ", Модель-" + phoneIgor.getModel() + ", Вес-" + phoneIgor.getWeight() + "kg");
+        System.out.println("phones.Phone 2: Номер-" + phoneRinat.getNumber() + ", Модель-" + phoneRinat.getModel() + ",Вес-" + phoneRinat.getWeight() + "kg");
+        System.out.println("phones.Phone 3: Номер -" + phoneDiman.getNumber() + ", Модель-" + phoneDiman.getModel() + ", Вес-" + phoneDiman.getWeight() + "kg");
 
         phoneRinat.receiveCall("Rinat");
         phoneIgor.sendMessage("89375896125", "8925412564" );
