@@ -20,10 +20,18 @@ public class Reader {
         System.out.println(fio + "Взял книги" + Arrays.toString(booksTitle));
     }
 
-    public void returnBook () {
+    public void returnBook (String...booksTitle) {
+        System.out.println(fio + "Вернул Книги " + Arrays.toString(booksTitle));
 
     }
     public void takeBooks(Book...books) {
+        System.out.println(fio + "Взфл Книги " );
+        for (int i = 0; i < books.length; i++) {
+            System.out.println(books[i]);
+
+        } {
+
+        }
 
     }
 
@@ -54,7 +62,14 @@ private String author;
         Reader Igor = new Reader(1985,"Eng", "Петров В.В", "89654", 7);
 
         Book book1 = new Book("Автор1", "Приключения");
+        Book book2 = new Book("Автор2", "Словарь");
+        Book book3 = new Book("Автор3", "Энциклопедия");
 
+        Igor.takeBook(3);
+        Igor.takeBooks("Приключения", "Словарь", "Энциклопедия");
+        Igor.takeBooks(book1,book2,book3);
+
+        Igor.returnBook("Приключения", "Словарь", "Энциклопедия");
     }
 }
 
