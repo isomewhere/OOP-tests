@@ -20,10 +20,9 @@ public class BaseTest {
         driver.findElement(By.name("q")).sendKeys(query + "\n");
 
         SearchResultPage searchResultPage = new SearchResultPage(driver);
-        searchResultPage.openSearchResultItem("Гладиолус");
 
-        By wikiPage = By.xpath("//*[@id='kp-wp-tab-overview']/div[3]/div/div/div/div/div/div[1]/div/div/span/a/div/div/div/div[1]/span");
-        driver.findElement(wikiPage).click();
+        searchResultPage.openSearchResultItem("Википедия");
+
     }
 
     public String getPageTitle() {
