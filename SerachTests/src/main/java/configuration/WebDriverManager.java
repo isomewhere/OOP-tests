@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class WebDriverManager {
     private static WebDriver driver;
 
-    public void startBrowser() {
+    public static void startBrowser() {
         System.setProperty("webdriver.chrome.driver", "src/main/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -16,7 +16,7 @@ public class WebDriverManager {
         return driver;
     }
 
-    public void closeBrowser() {
+    public static void closeBrowser() {
         if (driver != null) {
             driver.quit();
         }
