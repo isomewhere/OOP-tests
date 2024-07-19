@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverManager {
-    private WebDriver driver;
+    private static WebDriver driver;
 
     public void startBrowser() {
         System.setProperty("webdriver.chrome.driver", "src/main/chromedriver.exe");
@@ -12,7 +12,7 @@ public class WebDriverManager {
         driver.manage().window().maximize();
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver;
     }
 

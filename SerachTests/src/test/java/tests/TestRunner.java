@@ -1,31 +1,43 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.WebDriver;
+import org.junit.After;
+import org.junit.Before;
+import org.testng.annotations.Test;
 import pages.GooglePage;
 import pages.SearchResultPage;
 import pages.WikiPage;
 
+public class TestRunner extends BaseTest {
 
-    public class TestRunner extends BaseTest {
-        public static void main(String[] args) {
-            tests.TestRunner testRunner = new tests.TestRunner();
-            testRunner.setUp();
+    private WikiPage wikiPage;
 
-            try {
-                WebDriver driver = testRunner.webDriverManager.getDriver();
-                GooglePage googlePage = new GooglePage(driver);
-                googlePage.open("https://www.google.com");
-                googlePage.search("гладиолус");
-
-                SearchResultPage searchResultPage = new SearchResultPage(driver);
-                searchResultPage.openSearchResultItem("Гладиолус");
-
-                WikiPage wikiPage = new WikiPage(driver);
-                System.out.println("Текущая страница: " + wikiPage.getPageTitle());
-            } finally {
-                testRunner.tearDown();
-            }
-        }
+    @Before
+    public void setUp() {
+        super.setUp();
+        wikiPage = new WikiPage(driver);
     }
+
+    @org.junit.Test
+    public void runTest() {
+        GooglePage googlePage = new GooglePage(driver);
+        googlePage.open("https://www.google.com");
+        googlePage.search("гладиолус");
+
+//        SearchResultPage searchResultPage = new SearchResultPage(driver);
+//        searchResultPage.openSearchResultItem("Гладиолус");
+
+
+        wikiPage.enterWikiPage();
+
+
+        System.out.println("Текущая страница: " + wikiPage.getPageTitle());
+    }
+
+    @After
+    public void tearDown() {
+        super.tearDown();
+    }
+}
+
 
