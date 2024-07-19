@@ -24,8 +24,7 @@ public class TestRunner extends BaseTest {
         googlePage.open("https://www.google.com");
         googlePage.search("гладиолус");
 
-//        SearchResultPage searchResultPage = new SearchResultPage(driver);
-//        searchResultPage.openSearchResultItem("Гладиолус");
+
 
 
         wikiPage.enterWikiPage();
