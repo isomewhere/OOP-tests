@@ -2,7 +2,7 @@ package base;
 
 import configuration.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import pages.WikiPage;
+
 
 
 public class BaseTest {

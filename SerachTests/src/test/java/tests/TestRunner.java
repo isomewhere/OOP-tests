@@ -3,9 +3,7 @@ package tests;
 import base.BaseTest;
 import org.junit.After;
 import org.junit.Before;
-import org.testng.annotations.Test;
 import pages.GooglePage;
-import pages.SearchResultPage;
 import pages.WikiPage;
 
 public class TestRunner extends BaseTest {
@@ -24,11 +22,7 @@ public class TestRunner extends BaseTest {
         googlePage.open("https://www.google.com");
         googlePage.search("гладиолус");
 
-
-
-
         wikiPage.enterWikiPage();
-
 
         System.out.println("Текущая страница: " + wikiPage.getPageTitle());
     }
