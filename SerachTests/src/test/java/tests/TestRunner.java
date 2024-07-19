@@ -5,7 +5,6 @@ import configuration.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
 import pages.GooglePage;
 
 

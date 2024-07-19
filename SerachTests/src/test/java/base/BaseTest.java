@@ -1,8 +1,8 @@
 package base;
 
 import configuration.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.GooglePage;
 import pages.SearchResultPage;
 
 public class BaseTest {
@@ -17,7 +17,8 @@ public class BaseTest {
     public void googleSearchPage(String query) {
         WebDriver driver = WebDriverManager.getDriver();
         driver.get("https://www.google.com");
-        driver.findElement(By.name("q")).sendKeys(query + "\n");
+        GooglePage googlePage = new GooglePage(driver);
+        googlePage.search(query);
 
         SearchResultPage searchResultPage = new SearchResultPage(driver);
 
