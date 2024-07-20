@@ -9,6 +9,8 @@ public class BasePage {
         this.driver = driver;
     }
 
-
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
 }
 

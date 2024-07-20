@@ -2,32 +2,30 @@ package tests;
 
 import base.BaseTest;
 import configuration.WebDriverManager;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-
+import pages.SearchResultPage;
 
 
 class TestRunner extends BaseTest {
 
-    @BeforeEach
-    public void setUp() {
-        super.setUp();
-        WebDriver driver = WebDriverManager.getDriver();
-    }
-
     @Test
     void runTest() {
-        BaseTest baseTest = new BaseTest();
-        baseTest.open("https://www.google.com/");
-
+        setUp();
 
         googleSearchPage("гладиолус");
 
+        SearchResultPage searchResultPage = new SearchResultPage(WebDriverManager.getDriver());
+        searchResultPage.openSearchResultItem("Википедия");
 
-        System.out.println("Текущая страница: " + getPageTitle());
+        String pageTitle = searchResultPage.getPageTitle();
+        System.out.println("Текущая страница: " + pageTitle);
+
+
+        Assertions.assertEquals("Википедия", pageTitle);
+
+
     }
-
 }
 
 
