@@ -1,6 +1,8 @@
 package base;
 
 import configuration.WebDriverManager;
+
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import pages.GooglePage;
 import pages.SearchResultPage;
@@ -10,9 +12,6 @@ public class BaseTest {
         WebDriverManager.startBrowser();
     }
 
-    public void tearDown() {
-        WebDriverManager.closeBrowser();
-    }
 
     public void googleSearchPage(String query) {
         WebDriver driver = WebDriverManager.getDriver();
@@ -25,8 +24,17 @@ public class BaseTest {
         searchResultPage.openSearchResultItem("Википедия");
 
     }
+    public void open (String url) {
+        WebDriver driver = WebDriverManager.getDriver();
+        driver.get(url);
+    }
+
 
     public String getPageTitle() {
         return WebDriverManager.getDriver().getTitle();
+    }
+    @AfterEach
+    public void tearDown() {
+        WebDriverManager.closeBrowser();
     }
 }

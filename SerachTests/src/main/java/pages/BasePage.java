@@ -9,8 +9,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    public void open(String url) {
-        driver.get(url);
-    }
+
 }
 
