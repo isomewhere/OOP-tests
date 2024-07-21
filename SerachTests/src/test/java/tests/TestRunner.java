@@ -22,7 +22,7 @@ class TestRunner extends BaseTest {
         System.out.println("Текущая страница: " + pageTitle);
 
 
-        Assertions.assertEquals("Википедия", pageTitle);
+        Assertions.assertEquals("Шпажник — Википедия", pageTitle);
 
 
     }

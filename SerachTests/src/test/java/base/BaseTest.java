@@ -5,7 +5,7 @@ import configuration.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import pages.GooglePage;
-import pages.SearchResultPage;
+
 
 public class BaseTest {
     public void setUp() {
@@ -19,8 +19,8 @@ public class BaseTest {
         GooglePage googlePage = new GooglePage(driver);
         googlePage.search(query);
 
-        SearchResultPage searchResultPage = new SearchResultPage(driver);
-        searchResultPage.openSearchResultItem("Википедия");
+//        SearchResultPage = new SearchResultPage(driver);
+//        searchResultPage.openSearchResultItem("Википедия");
     }
 
     public void open(String url) {
