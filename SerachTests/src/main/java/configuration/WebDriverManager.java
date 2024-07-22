@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class WebDriverManager {
     private static WebDriver driver;
 
-    public static void startBrowser() {
+    public static void open() {
         System.setProperty("webdriver.chrome.driver", "src/main/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();

@@ -7,15 +7,16 @@ import org.openqa.selenium.WebDriver;
 
 
 public class BaseTest {
+    protected WebDriver driver;
 
-    public void open (String url) {
-    WebDriver driver = WebDriverManager.getDriver();
-    driver.get(url);
+    public BaseTest() {
+        this.driver = WebDriverManager.getDriver();
     }
 
-    public void startBrowser() {
-        WebDriverManager.startBrowser();
+    public void open(String url) {
+        driver.get(url);
     }
+
     @AfterEach
     public void tearDown() {
         WebDriverManager.closeBrowser();

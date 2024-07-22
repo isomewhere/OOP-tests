@@ -13,6 +13,6 @@ public class WikiPage extends BasePage {
     public void assertWikiPageTitle() {
         String pageTitle = getPageTitle();
         System.out.println("Текущая страница: " + pageTitle);
-        Assert.assertEquals("Шпажник — Википедия", pageTitle);
+        Assert.assertEquals("Википедия", pageTitle);
     }
 }

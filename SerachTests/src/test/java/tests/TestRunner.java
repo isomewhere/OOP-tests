@@ -4,6 +4,7 @@ import base.BaseTest;
 import configuration.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 import pages.GooglePage;
 import pages.SearchResultPage;
 import pages.WikiPage;
@@ -13,13 +14,14 @@ class TestRunner extends BaseTest {
     static SearchResultPage searchResultPage;
     static WikiPage wikiPage;
 
+
     @BeforeAll
     public static void setUp() {
-        new BaseTest().startBrowser();
-
-        googlePage = new GooglePage(WebDriverManager.getDriver());
-        searchResultPage = new SearchResultPage(WebDriverManager.getDriver());
-        wikiPage = new WikiPage(WebDriverManager.getDriver());
+        WebDriverManager.open();
+        WebDriver driver = WebDriverManager.getDriver();
+        googlePage = new GooglePage(driver);
+        searchResultPage = new SearchResultPage(driver);
+        wikiPage = new WikiPage(driver);
     }
 
     @Test
