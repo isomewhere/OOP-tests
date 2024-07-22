@@ -2,29 +2,26 @@ package tests;
 
 import base.BaseTest;
 import configuration.WebDriverManager;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pages.GooglePage;
 import pages.SearchResultPage;
+import pages.WikiPage;
 
 
 class TestRunner extends BaseTest {
 
     @Test
     void runTest() {
-        setUp();
-
-        googleSearchPage("гладиолус");
+        WebDriverManager.startBrowser();
+        open("https://www.google.com");
+        GooglePage googlePage = new GooglePage(WebDriverManager.getDriver());
+        googlePage.search("гладиолус");
 
         SearchResultPage searchResultPage = new SearchResultPage(WebDriverManager.getDriver());
         searchResultPage.openSearchResultItem("Википедия");
 
-        String pageTitle = searchResultPage.getPageTitle();
-        System.out.println("Текущая страница: " + pageTitle);
-
-
-        Assertions.assertEquals("Шпажник — Википедия", pageTitle);
-
-
+        WikiPage wikiPage = new WikiPage(WebDriverManager.getDriver());
+        wikiPage.assertWikiPageTitle();
     }
 }
 
