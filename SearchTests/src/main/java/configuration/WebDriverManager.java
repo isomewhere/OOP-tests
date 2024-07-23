@@ -24,6 +24,7 @@ public class WebDriverManager {
     public static void closeBrowser() {
         if (driver != null) {
             driver.quit();
+            driver = null;
             logger.info("Браузер закрыт.");
         }
     }

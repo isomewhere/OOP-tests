@@ -1,9 +1,11 @@
 package pages;
 
 
+
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+
 
 
 
@@ -19,7 +21,7 @@ public class WikiPage extends BasePage {
         log("Текущая страница: " + pageTitle);
         System.out.println("Текущая страница: " + pageTitle);
 
-        Assert.assertTrue(pageTitle.contains(expectedTitle), " Not Found");
+        Assertions.assertTrue(pageTitle.contains(expectedTitle), "Заголовок страницы не содержит ожидаемое значение: " + expectedTitle);
 
         log("Проверка успешна, заголовок страницы содержит: " + expectedTitle);
     }

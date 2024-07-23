@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 
 public class BaseTest {
-    protected WebDriver driver;
+    protected static WebDriver driver;
     private static final Logger logger = Logger.getLogger(BaseTest.class.getName());
 
     public BaseTest() {

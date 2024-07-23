@@ -5,7 +5,6 @@ import configuration.WebDriverManager;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import pages.GooglePage;
 import pages.SearchResultPage;
 import pages.WikiPage;
@@ -18,8 +17,8 @@ class TestRunner extends BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        WebDriverManager.open();
-        WebDriver driver = WebDriverManager.getDriver();
+       WebDriverManager.open();
+        driver = WebDriverManager.getDriver();
         googlePage = new GooglePage(driver);
         searchResultPage = new SearchResultPage(driver);
         wikiPage = new WikiPage(driver);
@@ -29,7 +28,7 @@ class TestRunner extends BaseTest {
     @Description("Тест для поиска и проверки Wikipedia")
     void runTest() {
 
-        open("https://www.google.com");
+       open("https://www.google.com");
 
         googlePage.search("гладиолус");
 

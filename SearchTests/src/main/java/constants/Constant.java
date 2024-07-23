@@ -6,7 +6,7 @@ public class Constant {
         public static final int EXPLICIT_WAIT = 10;
 
     }
-    public static class Urls {
 
-    }
+
+
 }
