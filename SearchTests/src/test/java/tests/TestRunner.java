@@ -1,7 +1,7 @@
 package tests;
 
 import base.BaseTest;
-import configuration.WebDriverManager;
+
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,8 +17,7 @@ class TestRunner extends BaseTest {
 
     @BeforeAll
     public static void setUp() {
-       WebDriverManager.open();
-        driver = WebDriverManager.getDriver();
+
         googlePage = new GooglePage(driver);
         searchResultPage = new SearchResultPage(driver);
         wikiPage = new WikiPage(driver);

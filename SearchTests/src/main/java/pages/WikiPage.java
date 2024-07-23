@@ -23,6 +23,6 @@ public class WikiPage extends BasePage {
 
         Assertions.assertTrue(pageTitle.contains(expectedTitle), "Заголовок страницы не содержит ожидаемое значение: " + expectedTitle);
 
-        log("Проверка успешна, заголовок страницы содержит: " + expectedTitle);
+        log("Проверка заголовка страницы должна содержать: " + expectedTitle);
     }
 }

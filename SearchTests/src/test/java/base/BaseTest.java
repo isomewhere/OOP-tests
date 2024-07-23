@@ -14,10 +14,10 @@ public class BaseTest {
     protected static WebDriver driver;
     private static final Logger logger = Logger.getLogger(BaseTest.class.getName());
 
-    public BaseTest() {
-        this.driver = WebDriverManager.getDriver();
+    static {
+        WebDriverManager.open();
+        driver = WebDriverManager.getDriver();
     }
-
     @Step("Открытие URL: {url}")
     public void open(String url) {
         log("Открытие URL: " + url);
