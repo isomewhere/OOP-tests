@@ -9,6 +9,8 @@ import pages.GooglePage;
 import pages.SearchResultPage;
 import pages.WikiPage;
 
+
+
 class TestRunner extends BaseTest {
     static GooglePage googlePage;
     static SearchResultPage searchResultPage;

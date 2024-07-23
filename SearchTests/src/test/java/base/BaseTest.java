@@ -15,7 +15,7 @@ public class BaseTest {
     private static final Logger logger = Logger.getLogger(BaseTest.class.getName());
 
     static {
-        WebDriverManager.open();
+
         driver = WebDriverManager.getDriver();
     }
     @Step("Открытие URL: {url}")
