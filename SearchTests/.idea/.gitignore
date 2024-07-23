@@ -1,3 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+SearchTests/allure-results
+SearchTests/.idea
