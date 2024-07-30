@@ -17,7 +17,7 @@ public class BaseTest {
         System.out.println("WebDriver инициализирован успешно.");
     }
 
-    @Step("Открытие URL: {url}")
+//    @Step("Открытие URL: {url}")
     public void open(String url) {
         if (driver != null) {
             System.out.println("Открытие URL: " + url);
