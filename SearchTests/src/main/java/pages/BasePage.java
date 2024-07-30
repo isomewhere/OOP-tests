@@ -19,8 +19,9 @@ public class BasePage {
         logger.info("Получен заголовок страницы: " + title);
         return title;
     }
+
     @Step("Логирование: {message}")
-    protected void log(String message) {
+    protected static void log(String message) {
         logger.info(message);
     }
 }
