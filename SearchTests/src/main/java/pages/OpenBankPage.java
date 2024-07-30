@@ -22,7 +22,7 @@ public class OpenBankPage extends BasePage {
         ElementsCollection currencyRows = $$(" .CurrencyExchangeFilterContent_currency-exchange-filter-content-column-wrapper__AzUkf");
 
         Map<String, Double> currencyMap = new HashMap<>();
-        currencyRows.forEach(row -> {
+        currencyRows.stream().forEach(row -> {
             String text = row.getText();
             String[] cells = text.split("\\s+");
 
@@ -37,6 +37,7 @@ public class OpenBankPage extends BasePage {
                 }
             }
         });
+
         System.out.println("Полученные курсы валют: " + currencyMap);
         return currencyMap;
     }
@@ -57,3 +58,4 @@ public class OpenBankPage extends BasePage {
         return saleRate > purchaseRate;
     }
 }
+
