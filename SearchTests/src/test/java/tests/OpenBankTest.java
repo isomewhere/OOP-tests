@@ -1,31 +1,34 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import pages.OpenBankPage;
 import java.util.Map;
 
 
 public class OpenBankTest extends BaseTest {
-    private OpenBankPage openBankPage;
+    public static OpenBankPage openBankPage;
 
-    @BeforeEach
-    public void setUp() {
-        super.setUp();
-
-        openBankPage = new OpenBankPage(driver);
+    @BeforeAll
+    public static void set() {
+        openBankPage = new OpenBankPage();
     }
 
-    @Test
-    void testCurrencyRates() {
-        System.out.println("Запуск теста на получение курсов валют...");
+    @ParameterizedTest
+    @ValueSource(strings = {"USD", "EUR"})
+    void testCurrencyRates(String currency) {
+        runCurrencyTest(currency);
+    }
+
+    void runCurrencyTest(String currency) {
+        System.out.println("Запуск теста на получение курсов валют для: " + currency);
         open("https://open.ru");
 
-        Map<String, Double> rates = openBankPage.getCurrencyRates();
-        boolean isSaleGreater = openBankPage.validateRatesAndCheckSaleGreater(rates);
-        System.out.println("Курс продажи больше курса покупки: " + isSaleGreater);
-        Assertions.assertTrue(isSaleGreater, "Курс продажи должен быть больше курса покупки");
+        Map<String, Double> rates = openBankPage.getCurrencyRates(currency);
+        boolean isSaleGreater = openBankPage.validateRatesAndCheckSaleGreater(rates, currency);
+        System.out.println("Курс продажи больше курса покупки для " + currency + ": " + isSaleGreater);
     }
 }

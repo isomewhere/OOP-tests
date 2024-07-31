@@ -10,10 +10,6 @@ public class BasePage {
     protected static final Logger logger = Logger.getLogger(BasePage.class.getName());
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public String getPageTitle() {
         String title = driver.getTitle();
         logger.info("Получен заголовок страницы: " + title);
