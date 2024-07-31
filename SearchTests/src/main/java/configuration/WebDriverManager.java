@@ -1,31 +1,25 @@
 package configuration;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 
 
 public class WebDriverManager {
-    private static WebDriver driver;
+   static {
+       Configuration.browserPosition = "0x0";
+       Configuration.browser = "chrome";
+       Configuration.browserVersion = "126.0";
+       Configuration.timeout = 20 * 1000;
+       Configuration.pageLoadTimeout = 30 * 1000;
+       Configuration.browserSize = "1920x1080";
+   }
 
-    public static WebDriver getDriver() {
+   public static void openBrowser (String url) {
+       Selenide.open(url);
+   }
 
-            setDriver();
-
-        return driver;
-    }
-
-    private static void setDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/main/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    public static void closeBrowser() {
-
-            driver.quit();
-
-        }
-    }
-
-
+   public static void closeBrowser() {
+       Selenide.closeWebDriver();
+   }
+}

@@ -4,9 +4,7 @@ import base.BaseTest;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pages.GooglePage;
-import pages.SearchResultPage;
-import pages.WikiPage;
+
 
 
 
