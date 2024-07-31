@@ -14,6 +14,7 @@ public class OpenBankTest extends BaseTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
+
         openBankPage = new OpenBankPage(driver);
     }
 
