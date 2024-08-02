@@ -7,18 +7,18 @@ import java.util.logging.Logger;
 
 
 public class BasePage {
-    protected static final Logger logger = Logger.getLogger(BasePage.class.getName());
+//    protected static final Logger logger = Logger.getLogger(BasePage.class.getName());
     protected WebDriver driver;
 
     public String getPageTitle() {
         String title = driver.getTitle();
-        logger.info("Получен заголовок страницы: " + title);
+//        logger.info("Получен заголовок страницы: " + title);
         return title;
     }
 
-    @Step("Логирование: {message}")
+//    @Step("Логирование: {message}")
     protected static void log(String message) {
-        logger.info(message);
+//        logger.info(message);
     }
 }
 

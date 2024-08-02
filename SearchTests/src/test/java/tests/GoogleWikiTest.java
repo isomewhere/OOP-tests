@@ -1,14 +1,5 @@
 package tests;
 
-import base.BaseTest;
-import jdk.jfr.Description;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-
-
-
-
 //public class GoogleWikiTest extends BaseTest {
 //    static GooglePage googlePage;
 //    static SearchResultPage searchResultPage;

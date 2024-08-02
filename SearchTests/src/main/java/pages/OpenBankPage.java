@@ -1,71 +1,30 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import org.junit.jupiter.api.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static com.codeborne.selenide.Selenide.$x;
+
 
 public class OpenBankPage extends BasePage {
-
     private static final Logger logger = LoggerFactory.getLogger(OpenBankPage.class);
 
-    @Step("Получение курсов валют для {currency}")
-    public Map<String, Double> getCurrencyRates(String currency) {
-        $(".CurrencyExchange_currency-exchange-wrapper__K_gc4").scrollIntoView(true);
-        $(".CurrencyExchange_currency-exchange-header__0yk9x h2 span").shouldBe(Condition.visible);
+    @Step("Проверка валютного курса для {currencyRate}")
+    public OpenBankPage checkCurrencyRate(String currencyRate) {
 
-        ElementsCollection currencyRows = $$(".CurrencyExchangeFilterContent_currency-exchange-filter-content-column-wrapper__AzUkf");
+        logger.info("Проверка валютного курса для: {}", currencyRate);
+        SelenideElement currency = $x("//div[contains(@class, 'CurrencyExchangeItem_currency-exchange-item-wrapper') and .= '" + currencyRate + "']");
 
-        Map<String, Double> currencyMap = new HashMap<>();
-        int[] columnIndexes = resolveColumnIndexes(currency);
+        double buy = Double.parseDouble(currency.$x("./following-sibling::div[1]").getText().replace(",", "."));
+        double sell = Double.parseDouble(currency.$x("./following-sibling::div[2]").getText().replace(",", "."));
+        logger.info("Курс покупки: {}", buy);
+        logger.info("Курс продажи: {}", sell);
 
-        currencyRows.forEach(row -> {
-            String[] cells = row.getText().split("\\s+");
-            currencyMap.put("Банк покупает " + currency, Double.parseDouble(cells[columnIndexes[0]]));
-            currencyMap.put("Банк продает " + currency, Double.parseDouble(cells[columnIndexes[1]]));
-        });
+        Assertions.assertTrue(sell > buy, () -> "Курс продажи (" + sell+ ") больше  курса покупки (" + buy + ")");
 
-        logCurrencyRates(currency, currencyMap);
-
-        return currencyMap;
-    }
-    @Step("На валидацию курсов и проверка, если продажа больше покупки для {currency}")
-    public boolean validateRatesAndCheckSaleGreater(Map<String, Double> rates, String currency) {
-        return isSaleGreaterThanPurchase(
-                rates.getOrDefault("Банк продает " + currency, -1.0),
-                rates.getOrDefault("Банк покупает " + currency, -1.0)
-        );
-    }
-
-    @Step("Проверка если продажа больше покупки")
-    public boolean isSaleGreaterThanPurchase(double saleRate, double purchaseRate) {
-        return saleRate > purchaseRate;
-    }
-
-    private int[] resolveColumnIndexes(String currency) {
-        return switch (currency) {
-            case "USD" -> new int[]{5, 6};
-            case "EUR" -> new int[]{8, 9};
-            default -> throw new IllegalArgumentException("Неподдерживаемая валюта: " + currency);
-        };
-    }
-
-    private void logCurrencyRates(String currency, Map<String, Double> currencyMap) {
-        Supplier<String> message = () -> currencyMap.isEmpty() ?
-                String.format("Курсы валют не найдены для валюты: %s", currency) :
-                String.format("Полученные курсы валют для %s: %s", currency, currencyMap.toString());
-        if (currencyMap.isEmpty()) {
-            logger.warn(message);
-        } else {
-            logger.info(message);
-        }
+        return this;
     }
 }
-
 
